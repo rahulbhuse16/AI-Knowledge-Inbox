@@ -1,6 +1,5 @@
 import {
   Menu,
-  Search,
 } from "lucide-react";
 
 interface HeaderProps {
