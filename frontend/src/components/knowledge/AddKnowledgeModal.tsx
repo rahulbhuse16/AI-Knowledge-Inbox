@@ -80,7 +80,7 @@ export function AddKnowledgeModal({
         } catch (err: any) {
 
             const message = getApiErrorMessage(
-                error,
+                err,
                 "Failed to save knowledge.",
             );
 
@@ -89,7 +89,7 @@ export function AddKnowledgeModal({
 
             setError(
                 getApiErrorMessage(
-                    error,
+                    err,
                     "Failed to save knowledge.",
                 ),
             );
