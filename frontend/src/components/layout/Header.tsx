@@ -32,17 +32,7 @@ export function Header({
         </div>
       </div>
 
-      <button className="flex items-center gap-2 rounded-lg border border-zinc-200 px-2.5 py-2 text-sm text-zinc-500 transition hover:bg-zinc-50 sm:px-3">
-        <Search size={16} />
-
-        <span className="hidden sm:inline">
-          Search
-        </span>
-
-        <kbd className="hidden rounded border border-zinc-200 bg-zinc-50 px-1.5 py-0.5 text-[10px] sm:inline">
-          ⌘ K
-        </kbd>
-      </button>
+      
     </header>
   );
 }

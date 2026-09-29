@@ -1,27 +1,17 @@
-from sentence_transformers import SentenceTransformer
+from langchain_community.embeddings.fastembed import FastEmbedEmbeddings
 
 
 class EmbeddingService:
     def __init__(self) -> None:
-        self.model = SentenceTransformer(
-            "sentence-transformers/all-MiniLM-L6-v2"
+        self.embeddings = FastEmbedEmbeddings(
+            model_name="BAAI/bge-small-en-v1.5",
         )
 
     def embed_text(self, text: str) -> list[float]:
-        embedding = self.model.encode(
-            text,
-            normalize_embeddings=True,
-        )
-
-        return embedding.tolist()
+        return self.embeddings.embed_query(text)
 
     def embed_documents(
         self,
         documents: list[str],
     ) -> list[list[float]]:
-        embeddings = self.model.encode(
-            documents,
-            normalize_embeddings=True,
-        )
-
-        return embeddings.tolist()
+        return self.embeddings.embed_documents(documents)

@@ -1,4 +1,4 @@
-export type SourceType = "note" | "url";
+export type SourceType = "note" | "url" | "all";
 
 export interface KnowledgeItem {
   id: number;

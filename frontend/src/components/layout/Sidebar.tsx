@@ -7,17 +7,20 @@ import {
   Sparkles,
   X,
 } from "lucide-react";
+import type { SourceType } from "../../types/knowledge";
 
 interface SidebarProps {
   onAddClick: () => void;
   mobileOpen: boolean;
   onClose: () => void;
+  onSelect:(source:SourceType)=>void
 }
 
 export function Sidebar({
   onAddClick,
   mobileOpen,
   onClose,
+  onSelect
 }: SidebarProps) {
   return (
     <>
@@ -76,7 +79,7 @@ export function Sidebar({
               onAddClick();
               onClose();
             }}
-            className="flex w-full items-center justify-center gap-2 rounded-xl bg-zinc-900 px-4 py-2.5 text-sm font-medium text-white transition hover:bg-zinc-800"
+            className="flex w-full items-center justify-center gap-2 rounded-xl bg-zinc-900 px-4 py-2.5 text-sm font-medium text-white transition hover:bg-zinc-800 cursor-pointer"
           >
             <Plus size={17} />
             Add knowledge
@@ -85,17 +88,23 @@ export function Sidebar({
 
         {/* Navigation */}
         <nav className="space-y-1 px-3">
-          <button className="flex w-full items-center gap-3 rounded-lg bg-zinc-100 px-3 py-2.5 text-sm font-medium text-zinc-900">
+          <button onClick={()=>{
+            onSelect('all')
+          }} className=" cursor-pointer flex w-full items-center gap-3 rounded-lg bg-zinc-100 px-3 py-2.5 text-sm font-medium text-zinc-900">
             <Inbox size={18} />
             All knowledge
           </button>
 
-          <button className="flex w-full items-center gap-3 rounded-lg px-3 py-2.5 text-sm text-zinc-600 transition hover:bg-zinc-50">
+          <button onClick={()=>{
+            onSelect('note')
+          }} className="cursor-pointer flex w-full items-center gap-3 rounded-lg px-3 py-2.5 text-sm text-zinc-600 transition hover:bg-zinc-50">
             <FileText size={18} />
             Notes
           </button>
 
-          <button className="flex w-full items-center gap-3 rounded-lg px-3 py-2.5 text-sm text-zinc-600 transition hover:bg-zinc-50">
+          <button onClick={()=>{
+            onSelect('url')
+          }} className="cursor-pointer flex w-full items-center gap-3 rounded-lg px-3 py-2.5 text-sm text-zinc-600 transition hover:bg-zinc-50">
             <Globe size={18} />
             Web pages
           </button>

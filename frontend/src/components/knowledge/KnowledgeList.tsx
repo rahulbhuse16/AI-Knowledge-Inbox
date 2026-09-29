@@ -4,12 +4,13 @@ import {
   ExternalLink,
   RefreshCw,
 } from "lucide-react";
-import type { KnowledgeItem } from "../../types/knowledge";
+import type { KnowledgeItem, SourceType } from "../../types/knowledge";
 
 interface KnowledgeListProps {
   items: KnowledgeItem[];
   loading: boolean;
   onRefresh: () => void;
+  source : SourceType
 }
 
 function formatDate(date: string): string {
@@ -24,7 +25,25 @@ export function KnowledgeList({
   items,
   loading,
   onRefresh,
+  source
 }: KnowledgeListProps) {
+
+   const getItemsList=()=>{
+
+    if(source==='note'){
+        return items?.filter((i)=>i.source_type==='note')
+    }
+    else  if(source==='url'){
+        return items?.filter((i)=>i.source_type==='url')
+
+    }
+    else{
+        return items;
+    }
+
+   }
+
+   items=getItemsList(                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           )
   return (
     <section>
       <div className="mb-4 flex items-center justify-between">
